@@ -4,16 +4,16 @@ export class LoginAccount {
   readonly ClickUserButton: Locator;
   readonly verifyAccountBalance: Locator;
   readonly verifyAccountNumber: Locator;
-  readonly verfiyTotalDeposits: Locator;
-  readonly verfiyTransferOut: Locator;
+  readonly verifyTotalDeposits: Locator;
+  readonly verifyTransfersOut: Locator;
   readonly verifyTransaction: Locator;
 
   constructor(page: Page) {
     this.ClickUserButton = page.locator('//*[@id="root"]/div/div[1]/div[2]/div/button[1]');
     this.verifyAccountBalance = page.locator('//*[@id="root"]/div/div/main/div/div/div[2]/div[1]/div[1]/h2');
     this.verifyAccountNumber = page.locator('//*[@id="root"]/div/div/main/div/div/div[2]/div[2]/div/span[2]');
-    this.verfiyTotalDeposits = page.locator('//*[@id="root"]/div/div/main/div/div/div[3]/div[1]/p[1]');
-    this.verfiyTransferOut = page.locator('//*[@id="root"]/div/div/main/div/div/div[3]/div[2]/p[1]');
+    this.verifyTotalDeposits = page.locator('//*[@id="root"]/div/div/main/div/div/div[3]/div[1]/p[1]');
+    this.verifyTransfersOut = page.locator('//*[@id="root"]/div/div/main/div/div/div[3]/div[2]/p[1]');
     this.verifyTransaction = page.locator('//*[@id="root"]/div/div/main/div/div/div[3]/div[3]/p[1]');
 }
 
@@ -34,14 +34,14 @@ export class LoginAccount {
   }
 
   async verifyDeposits() {
-    await expect(this.verfiyTotalDeposits).toBeVisible();
-    const accountDeposits = await this.verfiyTotalDeposits.textContent();
+    await expect(this.verifyTotalDeposits).toBeVisible();
+    const accountDeposits = await this.verifyTotalDeposits.textContent();
     console.log('Total Deposits: ' + accountDeposits);
   }
 
   async verifyTransferOut() {
-    await expect(this.verfiyTransferOut).toBeVisible();
-    const accountTransferOut = await this.verfiyTransferOut.textContent();
+    await expect(this.verifyTransfersOut).toBeVisible();
+    const accountTransferOut = await this.verifyTransfersOut.textContent();
     console.log('Total Transfer Out: ' + accountTransferOut);
   }
 

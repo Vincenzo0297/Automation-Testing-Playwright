@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { afterEach } from 'node:test';
 
 //toHaveURL() only checks where you currently are.
 //page.goto() is what actually takes you to a URL.
 //beforeEach() is a hook that runs before each test in the file. In this case, we are using it to log in to the Mock Bank application before each test.
 //afterEach() is a hook that runs after each test in the file. In this case, we are using it to log out of the Mock Bank application after each test.
+//toHaveURL() is a Playwright assertion that checks if the current URL matches the expected URL. In this case, we are checking if the user is redirected to the dashboard page after logging in.
 
 test.beforeEach('Login to Mock Bank', async ({ page }) => {
 
@@ -74,8 +74,6 @@ test('Verify the User details on Mock Bank', async ({ page }) => {
 
 test.afterEach('Verify the User details on Mock Bank', async ({ page }) => {
   await expect(page).toHaveURL('https://vb-bank-demo.vercel.app/dashboard');
-  
-  // Click on Logout button
   await page.locator('//*[@id="root"]/div/aside/div[2]/button/span').click();
   await page.waitForTimeout(2000);
   await page.screenshot({
